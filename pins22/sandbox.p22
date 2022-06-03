@@ -1,0 +1,163 @@
+fun putChar(c:char):void=none;
+#{  Hello, World!
+fun main() : int = {
+    putChar('H');putChar('e');putChar('l');putChar('l');putChar('o');
+    putChar(',');putChar(' ');putChar('W');putChar('o');putChar('r');
+    putChar('l');putChar('d');putChar('!');putChar((10:char));
+    0;
+};
+}#
+
+#{  Factorial
+fun main():int = {
+    factorial(6);
+};
+
+var result : int;
+fun factorial(i:int):int={
+    if i==0 | i==1 then
+        result = 1;
+    else
+        result = i * factorial(i-1);
+    end;
+    result;
+};
+}#
+
+#{  Fibonacci
+fun main(): int = {
+  fib(7);
+};
+
+fun fib(n: int): int = ({
+  if n == 0 | n == 1 then
+    result = n;
+  else
+    result = fib(n-1) + fib(n-2);
+  end;
+
+  result;
+} where var result: int;);
+}#
+
+#{ Filling/printing a 2D array
+var a : [2][3]char;
+fun main():int={
+    fillArray();
+    printArray();
+    1;
+};
+
+fun fillArray():void=(
+    {
+    i=0; c='A';
+    while i<2 do
+       j=0;
+       while j<3 do
+            a[i][j]=c;
+            j=j+1;
+            c = ((c:int)+1 :char);
+       end;
+       i=i+1;
+    end;
+    }
+    where
+    var i:int;
+    var j:int;
+    var c:char;
+);
+
+fun printArray():void=(
+  {
+  i=0;
+  while i<2 do
+     j=0;
+     while j<3 do
+          putChar( a[i][j] );
+          putChar(' ');
+          j=j+1;
+     end;
+     putChar((10:char));
+     i=i+1;
+  end;
+  }
+  where
+  var i:int;
+  var j:int;
+);
+}#
+
+#{ Bubble sort }#
+typ tab = [10]int;
+var n : int;
+fun main():int=({
+    n = 10;
+    tabela[0] = 5; tabela[1] = 2; tabela[2] = 3;
+    tabela[3] = 7; tabela[4] = 8; tabela[5] = 9;
+    tabela[6] = 1; tabela[7] = 4; tabela[8] = 0;
+    tabela[9] = 6;
+
+    printArray( ^tabela );
+    sort( ^tabela );
+    printArray( ^tabela );
+    1;
+    }
+    where
+    var tabela : tab;
+);
+
+fun sort(arr : ^tab):void=({
+    i = 0;
+    while i < n-1 do
+        j = 0;
+        while j < n-i-1 do
+            if (arr^)[j] > (arr^)[j+1] then
+                temp = (arr^)[j];
+                (arr^)[j] = (arr^)[j+1];
+                (arr^)[j+1] = temp;
+            end;
+            j = j+1;
+        end;
+        i = i+1;
+    end;
+    }
+    where
+    var a : tab;
+    var i: int;
+    var j : int;
+    var temp : int;
+);
+
+fun printArray(arr: ^tab):void=({
+    i = 0;
+    while i < n do
+        putChar( ( (arr^)[i]+48 : char) );
+        putChar(' ');
+        i = i+1;
+    end;
+    putChar((10:char));
+}
+    where
+    var i : int;
+    var a : tab;
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
